@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
 
-const MAP_INDO_TEXTURE_PATH = "C:/Users/Administrator/Desktop/MAP INDO/resource/texture";
+const MAP_INDO_TEXTURE_PATH = path.join(process.cwd(), "public", "texture");
 
 export async function GET(request: NextRequest) {
   try {

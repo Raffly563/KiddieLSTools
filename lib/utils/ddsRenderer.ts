@@ -49,7 +49,7 @@ export async function getDDSDataUrl(
     );
   }
 
-  const texture = await textureCache.get(fileUrl);
+  const texture = await textureCache.get(fileUrl)!;
   if (!texture || !material || !mesh || !camera || !renderer || !scene) {
     throw new Error("Renderer not initialized properly");
   }
@@ -59,8 +59,9 @@ export async function getDDSDataUrl(
   material.needsUpdate = true;
 
   // Resize geometry to match full texture size
-  const texWidth = texture.image.width;
-  const texHeight = texture.image.height;
+  const image = texture.image as { width: number; height: number };
+  const texWidth = image.width;
+  const texHeight = image.height;
   mesh.geometry = new THREE.PlaneGeometry(texWidth, texHeight);
 
   // Plane geometry is centered by default. We want top-left to be at (0,0).

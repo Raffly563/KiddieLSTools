@@ -19,6 +19,7 @@ import {
   CheckCircle2,
   Clock,
   TrendingUp,
+  type LucideIcon,
 } from "lucide-react";
 
 interface StatCardProps {
@@ -49,7 +50,7 @@ function StatCard({ label, value, sub, accent = "default" }: StatCardProps) {
 
 interface ModuleCardProps {
   href: string;
-  icon: React.ElementType;
+  icon: LucideIcon;
   title: string;
   description: string;
 }
@@ -75,7 +76,7 @@ function ModuleCard({ href, icon: Icon, title, description }: ModuleCardProps) {
   );
 }
 
-const modules = [
+const modules: ModuleCardProps[] = [
   {
     href: "/ini-editor",
     icon: Settings,
